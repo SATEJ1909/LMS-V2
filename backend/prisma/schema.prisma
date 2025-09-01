@@ -21,4 +21,38 @@ model User {
   email String  @unique
   password String 
   role Role
+  Course Course[]
+  Purchase Purchase[]
+}
+
+
+model Course {
+  id          Int      @id @default(autoincrement())
+  title       String
+  description String
+  price       Float    @default(0.0)   // free course = 0
+  thumbnail   String?                 // optional image
+  published   Boolean   @default(false)
+
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+
+  // relation with instructor
+  instructor   User     @relation(fields: [instructorId], references: [id])
+  instructorId Int
+
+  // relation with purchases/enrollments
+  purchases    Purchase[]
+}
+
+
+model Purchase {
+  id        Int      @id @default(autoincrement())
+  user      User     @relation(fields: [userId], references: [id])
+  userId    Int
+
+  course    Course   @relation(fields: [courseId], references: [id])
+  courseId  Int
+
+  createdAt DateTime @default(now())
 }

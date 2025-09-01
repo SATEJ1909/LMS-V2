@@ -83,3 +83,83 @@ export const login = async(req : Request , res : Response) =>{
         })
     }
 }
+
+
+export const purchaseCourse = async(req : Request , res : Response) => {
+    try {
+        const {userId , courseId} = req.body;
+
+        const course = await prisma.course.findUnique({
+            where : {
+                id : courseId
+            }
+        })  
+
+        if(!course){
+            return res.status(404).json({
+                success : false , 
+                message : "Course not found"
+            })
+        }
+
+        const user = await prisma.user.findUnique({
+            where : {
+                id : userId
+            }
+        })
+
+        if(!user){
+            return res.status(404).json({
+                success : false , 
+                message : "User not found"
+            })
+        }
+
+        const purchase = await prisma.purchase.create({
+            data : {
+                userId,
+                courseId
+            }
+        })
+
+        return res.status(200).json({
+            success : true , 
+            message : "Course Purchased Successfully"
+        })
+
+    } catch (error: any) {
+         console.log(error);
+         return res.status(404).json({
+            success : false , 
+            message : error.message
+        })
+    }
+}
+
+export const getProfile = async(req : Request , res : Response) => {
+    try {
+       const userId = req.userId;
+
+       const user = await prisma.user.findUnique({
+        where: { id: Number(req.userId) },
+        select: {
+        id: true,
+        name: true,
+        email: true,
+        role: true,
+      },
+       })
+
+       return res.status(200).json({
+        success : true , 
+        message : "Profile Fetched Successfully",
+        user
+       })
+    } catch (error : any) {
+        console.log(error);
+        return res.status(404).json({
+            success : false , 
+            message : error.message
+        })
+    }
+}
