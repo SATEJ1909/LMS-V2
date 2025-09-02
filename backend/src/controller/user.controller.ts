@@ -67,7 +67,6 @@ export const login = async(req : Request , res : Response) =>{
         } , process.env.JWT_SECRET ?? "default-secret-key");
 
 
-
         return res.status(200).json({
             success : true , 
             message : "Login Successfully",
