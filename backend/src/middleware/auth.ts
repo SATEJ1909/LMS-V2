@@ -17,7 +17,15 @@ export const authenticate = (req: Request, res: Response, next: NextFunction) =>
   try {
     //@ts-ignore
     const decoded = jwt.verify(token, process.env.JWT_SECRET || "default-secret-key") ;
-    req.userId = decoded.id; // Attach user to request
+   
+    //@ts-ignore
+    req.user = {
+      id: decoded.id,
+      role: decoded.role,
+    };
+
+    //console.log(decoded);
+
     next();
   } catch (err) {
     return res.status(401).json({ message: "Invalid or expired token" });

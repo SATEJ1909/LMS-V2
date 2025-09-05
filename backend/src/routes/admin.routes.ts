@@ -1,7 +1,6 @@
 import { authenticate , authorize } from "../middleware/auth.js";
 import { getAllInstructor , getAllUsers } from "../controller/admin.controller.js";
-import e from "express";
-const { Router } = require("express");
+import { Router } from "express";
 const AdminRouter = Router();
 
 AdminRouter.get("/users" , authenticate , authorize("ADMIN") , getAllUsers);
