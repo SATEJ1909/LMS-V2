@@ -91,7 +91,9 @@ export const login = async (req: Request, res: Response) => {
 
 export const purchaseCourse = async (req: Request, res: Response) => {
     try {
-        const { userId, courseId } = req.body;
+        //@ts-ignore
+        const userId = req.user?.id;
+        const { courseId } = req.body;
 
         const course = await prisma.course.findUnique({
             where: {

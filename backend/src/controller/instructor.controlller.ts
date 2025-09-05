@@ -13,7 +13,8 @@ export const createCourse = async(req : Request , res : Response) => {
                 price,
                 instructor : {
                     connect : {
-                        id: req.userId ? Number(req.userId) : 0 
+                        // @ts-ignore
+                        id: req.user.id
                     }
                 }
             }
