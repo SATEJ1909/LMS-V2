@@ -12,3 +12,14 @@ export const getAllUsers = async(req : Request , res : Response) => {
         return res.status(404).json({success : false , message : error.message})
     }
 }
+
+export const getAllInstructor = async(req : Request , res : Response) => {
+    try {
+        const users = await prisma.user.findMany({where : {role : "INSTRUCTOR"}});
+
+        return res.status(200).json(users);
+    } catch (error : any) {
+        console.log(error);
+        return res.status(404).json({success : false , message : error.message})
+    }
+}
