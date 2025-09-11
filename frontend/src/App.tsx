@@ -1,14 +1,16 @@
 import Home from "./pages/Home"
 import { Route , Routes } from "react-router-dom"
 import Navbar from "./components/Navbar"
+import Login from "./components/Login"
 
 function App() {
   
   return (
     <>
-    <Navbar isLoggedIn={true} />
+    <Navbar />
       <Routes>
         <Route path="/" element={<Home />} />
+        <Route path="/login" element={<Login />} />
       </Routes>
     </>
   )

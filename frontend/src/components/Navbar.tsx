@@ -5,8 +5,9 @@ import { useState, useEffect } from "react";
 // Navbar component designed to work even if your app is NOT wrapped in a Router.
 // It avoids `useNavigate` / `Link` so it won't throw "useNavigate() may be used only in the context of a <Router>".
 
-export default function Navbar({ isLoggedIn }: { isLoggedIn: boolean }) {
+export default function Navbar() {
   const [darkMode, setDarkMode] = useState(false);
+  const [isLoggedIn , setIsLoggedIn] = useState(false);
 
   // toggle a `dark` class on <html> so Tailwind's dark: utilities work if you use them
   useEffect(() => {
@@ -56,14 +57,6 @@ export default function Navbar({ isLoggedIn }: { isLoggedIn: boolean }) {
                 Login
               </a>
 
-              <a
-                href="/signup"
-                data-testid="signup-link"
-                className="px-4 py-2 rounded-full bg-white text-black font-bold hover:bg-gray-200 transition"
-                aria-label="Signup"
-              >
-                Signup
-              </a>
             </>
           ) : (
             <motion.button
