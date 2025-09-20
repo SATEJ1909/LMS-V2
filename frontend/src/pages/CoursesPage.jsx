@@ -265,7 +265,7 @@ const CoursesPage = () => {
                       </span>
                     ) : (
                       <span className="bg-white text-gray-900 px-2 py-1 rounded-full text-sm font-medium">
-                        ${course.price}
+                        ₹{course.price}
                       </span>
                     )}
                   </div>
@@ -313,7 +313,7 @@ const CoursesPage = () => {
                         <>
                           <ShoppingCart className="w-5 h-5" />
                           <span>
-                            {course.price === 0 ? 'Enroll Free' : `Purchase $${course.price}`}
+                            {course.price === 0 ? 'Enroll Free' : `Purchase ₹${course.price}`}
                           </span>
                         </>
                       )}

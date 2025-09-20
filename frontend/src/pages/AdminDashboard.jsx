@@ -77,10 +77,10 @@ const AdminDashboard = () => {
     },
     {
       title: 'Platform Revenue',
-      value: '$45,230',
+      value: '₹4,52,300',
       icon: DollarSign,
       color: 'from-yellow-500 to-yellow-600',
-      change: '+$5,120 this month',
+      change: '+₹51,200 this month',
     },
   ];
 
@@ -276,9 +276,9 @@ const AdminDashboard = () => {
                           <div className="text-sm font-medium text-gray-900 truncate">
                             {course.title}
                           </div>
-                          <div className="text-xs text-gray-500">
-                            ${course.price}
-                          </div>
+                        <div className="text-xs text-gray-500">
+                          ₹{course.price}
+                        </div>
                         </div>
                         <div className="text-xs text-gray-500">
                           {new Date(course.createdAt).toLocaleDateString()}
@@ -455,7 +455,7 @@ const AdminDashboard = () => {
                         )}
                         <div className="absolute top-2 right-2">
                           <span className="bg-white text-gray-900 px-2 py-1 rounded-full text-xs font-medium">
-                            ${course.price}
+                            ₹{course.price}
                           </span>
                         </div>
                       </div>

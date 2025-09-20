@@ -29,7 +29,7 @@ const InstructorDashboard = () => {
   const [formData, setFormData] = useState({
     title: '',
     description: '',
-    price: '',
+    price: '500',
     thumbnail: '',
   });
   const [submitLoading, setSubmitLoading] = useState(false);
@@ -132,7 +132,7 @@ const InstructorDashboard = () => {
     setFormData({
       title: '',
       description: '',
-      price: '',
+      price: '500',
       thumbnail: '',
     });
     setSelectedCourse(null);
@@ -166,10 +166,10 @@ const InstructorDashboard = () => {
     },
     {
       title: 'Total Revenue',
-      value: '$12,450',
+      value: '₹1,24,500',
       icon: DollarSign,
       color: 'from-purple-500 to-purple-600',
-      change: '+$2,100 this month',
+      change: '+₹21,000 this month',
     },
     {
       title: 'Avg. Rating',
@@ -346,7 +346,7 @@ const InstructorDashboard = () => {
                     )}
                     <div className="absolute top-2 right-2">
                       <span className="bg-white text-gray-900 px-2 py-1 rounded-full text-xs font-medium">
-                        ${course.price}
+                        ₹{course.price}
                       </span>
                     </div>
                   </div>
@@ -477,16 +477,16 @@ const InstructorDashboard = () => {
 
                   <div>
                     <label className="block text-sm font-medium text-gray-700 mb-1">
-                      Price ($)
+                      Price (₹)
                     </label>
                     <input
                       type="number"
                       min="0"
-                      step="0.01"
+                      step="1"
                       value={formData.price}
                       onChange={(e) => setFormData({ ...formData, price: e.target.value })}
                       className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent"
-                      placeholder="0.00"
+                      placeholder="500"
                     />
                   </div>
 
@@ -591,16 +591,16 @@ const InstructorDashboard = () => {
 
                   <div>
                     <label className="block text-sm font-medium text-gray-700 mb-1">
-                      Price ($)
+                      Price (₹)
                     </label>
                     <input
                       type="number"
                       min="0"
-                      step="0.01"
+                      step="1"
                       value={formData.price}
                       onChange={(e) => setFormData({ ...formData, price: e.target.value })}
                       className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent"
-                      placeholder="0.00"
+                      placeholder="500"
                     />
                   </div>
 
