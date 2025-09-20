@@ -170,3 +170,14 @@ export const getProfile = async (req: Request, res: Response) => {
         })
     }
 }
+
+export const getAllCourses = async(req : Request , res : Response) => {
+    try {
+        const courses = await prisma.course.findMany({});
+
+        return res.status(200).json(courses);
+    } catch (error : any) {
+        console.log(error);
+        return res.status(404).json({success : false , message : error.message})
+    }
+}
